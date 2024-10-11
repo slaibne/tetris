@@ -19,10 +19,18 @@ GRAY = (128, 128, 128)
 # Shape of Tetriminos
 SHAPES = [
     [[1, 1, 1, 1]],
-    [[1, 1], [1, 1]],
-    [[0, 1, 0], [1, 1, 1]],
-    [[1, 1, 0], [0, 1, 1]],
-    [[0, 1, 1], [1, 1, 0]],
+    [[1, 1],
+     [1, 1]],
+    [[0, 1, 0],
+     [1, 1, 1]],
+    [[1, 1, 0],
+     [0, 1, 1]],
+    [[0, 1, 1],
+     [1, 1, 0]],
+    [[1, 0, 0],
+     [1, 1, 1],]
+    [[0, 0, 1],
+     [1, 1, 1]]
 ]
 
 # Create screen
@@ -35,7 +43,7 @@ clock = pygame.time.Clock()
 
 # Create grid and draw grid lines
 def create_grid():
-    grid = [[BLACK for _ in range(GRID_WIDTH)] for _ in range(GRID_HEIGHT)]
+    grid = [[0 for _ in range(GRID_WIDTH)] for _ in range(GRID_HEIGHT)]
     return grid
 
 
