@@ -166,7 +166,11 @@ def check_collision(tetrimino, grid):
                     i + tetrimino.y >= GRID_HEIGHT  # Hits bottom
                     or j + tetrimino.x < 0  # Hits left wall
                     or j + tetrimino.x >= GRID_WIDTH  # Hits right wall
+
                     or grid[i + tetrimino.y][j + tetrimino.x] == BLACK
+
+                    or grid[i + tetrimino.y][j + tetrimino.x] != 0
+
                 ):  # Hits another block
                     return True
     return False
@@ -198,10 +202,10 @@ def hold_tetrimino(current_tetrimino, held_tetrimino, swap_allowed):
 
     if held_tetrimino is None:  # If no Tetrimino is held yet
         held_tetrimino = current_tetrimino  # Hold the current Tetrimino
-        current_tetrimino = new_tetrimino()  # Spawn new tetrimino
+        new_tetrimino()  # Spawn new tetrimino
     else:
         # Swap the held Tetrimino with the current one
-        current_tetrimino, held_tetrimino = held_tetrimino, current_tetrimino
+        current_tetrimino, held_tetrimino, swap_tetrimino = held_tetrimino, current_tetrimino, swap_tetrimino
 
     swap_allowed = False
     return current_tetrimino, held_tetrimino, swap_allowed
@@ -226,7 +230,7 @@ def hold_tetrimino(current_tetrimino, held_tetrimino, swap_allowed):
 def clear_lines(grid, locked_positions):
     lines_cleared = 0
     # Check from the bottom row up
-    for i in range(len(grid) - 1, -1, -1):  # Iterate through rows bottom to top
+    for i in reversed(range(len(grid))) # Iterate through rows bottom to top
         row = grid[i]
         if 0 not in row:  # If the row is full
             lines_cleared += 1
