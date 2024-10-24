@@ -33,7 +33,7 @@ SHAPES = [
     [[0, 1, 1],
      [1, 1, 0]],
     [[1, 0, 0],
-     [1, 1, 1],]
+     [1, 1, 1],],
     [[0, 0, 1],
      [1, 1, 1]]
 ]
@@ -166,7 +166,11 @@ def check_collision(tetrimino, grid):
                     i + tetrimino.y >= GRID_HEIGHT  # Hits bottom
                     or j + tetrimino.x < 0  # Hits left wall
                     or j + tetrimino.x >= GRID_WIDTH  # Hits right wall
+
+                    or grid[i + tetrimino.y][j + tetrimino.x] == BLACK
+
                     or grid[i + tetrimino.y][j + tetrimino.x] != 0
+
                 ):  # Hits another block
                     return True
     return False
