@@ -230,7 +230,7 @@ def hold_tetrimino(current_tetrimino, held_tetrimino, swap_allowed):
 def clear_lines(grid, locked_positions):
     lines_cleared = 0
     # Check from the bottom row up
-    for i in reversed(range(len(grid))) # Iterate through rows bottom to top
+    for i in reversed(range(len(grid))):# Iterate through rows bottom to top
         row = grid[i]
         if 0 not in row:  # If the row is full
             lines_cleared += 1
